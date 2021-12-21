@@ -13,6 +13,7 @@
         <order>100</order>
         <relation_type display_value="Runs on::Runs">60bc4e22c0a8010e01f074cbe6bd73c3</relation_type>
         <script><![CDATA[gs.info("ServiceNow MID Server: 1 start!");//TEST
+
 // get mid server Service Name
 var ServiceName = '';
 var matchWindows = /.*agent.*bin.*wrapper\-windows.*\.exe/.exec(g_classification.command.toString());
@@ -43,20 +44,21 @@ if (ServiceName != '') {
 }
 
 current.name = processName + "@" + computerName;
+
 gs.info("ServiceNow MID Server: 6 Name - " + current.name);//TEST
 gs.info("ServiceNow MID Server: 7 end!");//TEST]]></script>
         <sys_class_name>discovery_classy_proc</sys_class_name>
         <sys_created_by>admin.gustavo.posada</sys_created_by>
         <sys_created_on>2020-06-04 09:18:55</sys_created_on>
         <sys_id>ea203333db459010769c2a9a4896199f</sys_id>
-        <sys_mod_count>54</sys_mod_count>
+        <sys_mod_count>55</sys_mod_count>
         <sys_name>ServiceNow MID Server</sys_name>
         <sys_package display_value="Global" source="global">global</sys_package>
         <sys_policy/>
         <sys_scope display_value="myITOM">0ff99971072001107abcf19d7c1ed003</sys_scope>
         <sys_update_name>discovery_classy_proc_ea203333db459010769c2a9a4896199f</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2021-12-21 09:27:49</sys_updated_on>
+        <sys_updated_on>2021-12-21 10:21:02</sys_updated_on>
         <table>cmdb_ci_app_server</table>
         <test_with>fe0203a907d130107abcf19d7c1ed02f,55e61523077730107abcf19d7c1ed046,088859e3077730107abcf19d7c1ed0aa</test_with>
     </discovery_classy_proc>
