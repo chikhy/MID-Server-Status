@@ -1,0 +1,49 @@
+<record_update sys_domain="global" table="em_match_rule">
+<em_match_rule action="INSERT_OR_UPDATE">
+<active>true</active>
+<additional_info_filter>{"conditions":[]}</additional_info_filter>
+<bind>true</bind>
+<bind_type>2</bind_type>
+<ci_type>cmdb_ci</ci_type>
+<close_alert_freq>1</close_alert_freq>
+<close_alert_int>120</close_alert_int>
+<close_alert_op/>
+<close_alert_value/>
+<create_alert_freq>1</create_alert_freq>
+<create_alert_int>120</create_alert_int>
+<create_alert_op/>
+<create_alert_value/>
+<description/>
+<event_class>EMSelfMonitoring</event_class>
+<event_data>{"additionalInfoFields":[{"label":"name","mapping":[],"regex":"","simpleMode":"","name":"name","value":"MID Server C fxvdlnbe27_linux"}],"rawFields":[{"label":"Description","mapping":[],"regex":"","simpleMode":"","name":"description","value":"MID Server : MID Server C fxvdlnbe27_linux - State : Paused"},{"label":"Node","mapping":[],"regex":"","simpleMode":"","name":"node","value":""},{"label":"Type","mapping":[],"regex":"","simpleMode":"","name":"type","value":"SelfMonitoring"},{"label":"Resource","mapping":[],"regex":"","simpleMode":"","name":"resource","value":"MID Servers"},{"label":"Message key","mapping":[],"regex":"","simpleMode":"","name":"message_key","value":"MIDServerStatus_MID Server C fxvdlnbe27_linux_Status"},{"label":"Severity","mapping":[],"regex":"","simpleMode":"","name":"severity","value":"4"},{"label":"Metric Name","mapping":[],"regex":"","simpleMode":"","name":"metric_name","value":"MID Server Status - Paused"},{"label":"Source instance","mapping":[],"regex":"","simpleMode":"","name":"event_class","value":""},{"label":"Source","mapping":[],"regex":"","simpleMode":"","name":"source","value":"EMSelfMonitoring"},{"label":"Resolution state","mapping":[],"regex":"","simpleMode":"","name":"resolution_state","value":"New"},{"label":"CI type","mapping":[],"regex":"","simpleMode":"","name":"ci_type","value":""},{"label":"Classification","mapping":[],"regex":"","simpleMode":"","name":"classification","value":"0"}],"expressions":[],"hasChanged":false}</event_data>
+<filter table="em_event">
+resource=MID Servers^metric_nameSTARTSWITHMID Server Status -^descriptionLIKEMID Server:^type=SelfMonitoring^descriptionLIKEState:^EQ
+<item endquery="false" field="resource" goto="false" newquery="false" operator="=" or="false" value="MID Servers"/>
+<item endquery="false" field="metric_name" goto="false" newquery="false" operator="STARTSWITH" or="false" value="MID Server Status -"/>
+<item endquery="false" field="description" goto="false" newquery="false" operator="LIKE" or="false" value="MID Server:"/>
+<item endquery="false" field="type" goto="false" newquery="false" operator="=" or="false" value="SelfMonitoring"/>
+<item endquery="false" field="description" goto="false" newquery="false" operator="LIKE" or="false" value="State:"/>
+<item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/>
+</filter>
+<identification_rules>[]</identification_rules>
+<ignore_event>false</ignore_event>
+<metric/>
+<name>MID Server Status</name>
+<order>100</order>
+<rule_mapping_counter>0</rule_mapping_counter>
+<rule_version>jakarta</rule_version>
+<simple_filter>{"compound_type":"or","subpredicates":[{"compound_type":"and","subpredicates":[{"subpredicates":[{"operator":{"label":"is","editor":"field","advancedEditor":"string","name":"="},"field":{"label":"Resource","choices":[],"name":"resource","value":"MID Servers"},"fieldType":"string"},{"operator":{"label":"starts with","editor":"string","advancedEditor":"string","name":"STARTSWITH"},"field":{"label":"Metric Name","choices":[],"name":"metric_name","value":"MID Server Status -"},"fieldType":"string"},{"operator":{"label":"contains","editor":"string","advancedEditor":"string","name":"LIKE"},"field":{"label":"Description","choices":[],"name":"description","value":"MID Server:"},"fieldType":"string"},{"operator":{"label":"is","editor":"field","advancedEditor":"string","name":"="},"field":{"label":"Type","choices":[],"name":"type","value":"SelfMonitoring"},"fieldType":"string"},{"operator":{"label":"contains","editor":"string","advancedEditor":"string","name":"LIKE"},"field":{"label":"Description","choices":[],"name":"description","value":"State:"},"fieldType":"string"}],"compound_type":"and"}]}]}</simple_filter>
+<sys_created_by>admin.gustavo.posada</sys_created_by>
+<sys_created_on>2021-12-03 15:57:12</sys_created_on>
+<sys_domain>global</sys_domain>
+<sys_id>c6f8c644071445107abcf19d7c1ed0a8</sys_id>
+<sys_mod_count>6</sys_mod_count>
+<sys_overrides/>
+<sys_updated_by>admin.gustavo.posada</sys_updated_by>
+<sys_updated_on>2021-12-03 16:20:28</sys_updated_on>
+<table>em_event</table>
+<threshold>false</threshold>
+<threshold_alert_template/>
+<transform>true</transform>
+</em_match_rule>
+</record_update>
