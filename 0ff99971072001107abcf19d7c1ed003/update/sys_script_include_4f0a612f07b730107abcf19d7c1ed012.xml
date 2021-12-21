@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>global.CustomEventManagement</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description>To Configure Event Management for MID Server health monitoring</description>
+        <name>CustomEventManagement</name>
+        <script><![CDATA[var CustomEventManagement = Class.create();
+
+CustomEventManagement.prototype = {
+    initialize: function() {},
+    // use this function to create an Event using the EvtMgmtEventAlertGenerator script include
+    createEvent: function(msgKey, severity, description, aditionaInfo, glideMonitor, glideState, monitorName, stateName, generalInfo) {
+        try {
+            var eventSender = new EvtMgmtEventAlertGenerator();
+            eventSender.openEvent(msgKey, severity, description, aditionaInfo, glideMonitor, glideState, monitorName, stateName, generalInfo);
+        } catch (error) {
+            gs.info("Function error: " + error, "CustomEventManagement.createEvent");
+        }
+    },
+    type: 'CustomEventManagement'
+};
+
+/**
+ * Search for CMDB CI of the given class by the name, fqdn or ip_address.
+ * @static
+ * @param value [string] the given string value which is used for identification
+ * @param table [string] name of the root CMDB table, which must contain the CI
+ * @returns [GlideRecord] the GlideRecord of the first matched CMDB CI
+ */
+CustomEventManagement.identifyCmdbCi = function(value, table) {
+    if (gs.nil(value)) {
+        return null;
+    }
+
+    var cmdbClass = gs.nil(table) ? "cmdb_ci" : table;
+
+    var ci = new GlideRecord(cmdbClass);
+    var orQC = ci.addQuery("name", value);
+    orQC.addOrCondition("fqdn", value);
+    orQC.addOrCondition("ip_address", value);
+    ci.query();
+    if (ci.next()) {
+        return ci.sys_id.toString();
+    }
+	return '';
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin.gustavo.posada</sys_created_by>
+        <sys_created_on>2021-11-19 14:10:45</sys_created_on>
+        <sys_id>4f0a612f07b730107abcf19d7c1ed012</sys_id>
+        <sys_mod_count>5</sys_mod_count>
+        <sys_name>CustomEventManagement</sys_name>
+        <sys_package display_value="Global" source="global">global</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="myITOM">0ff99971072001107abcf19d7c1ed003</sys_scope>
+        <sys_update_name>sys_script_include_4f0a612f07b730107abcf19d7c1ed012</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2021-12-21 09:22:46</sys_updated_on>
+    </sys_script_include>
+    <sys_claim action="INSERT_OR_UPDATE">
+        <claim_owner_scope display_value="myITOM">0ff99971072001107abcf19d7c1ed003</claim_owner_scope>
+        <claim_timestamp>17ddc4ce5580000001</claim_timestamp>
+        <metadata_update_name>sys_script_include_4f0a612f07b730107abcf19d7c1ed012</metadata_update_name>
+        <previous_claim_app_version>1.0.0</previous_claim_app_version>
+        <previous_claim_name>myITOM</previous_claim_name>
+        <previous_claim_scope>0ff99971072001107abcf19d7c1ed003</previous_claim_scope>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2021-12-21 09:22:46</sys_created_on>
+        <sys_id>485b913107a001107abcf19d7c1ed076</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2021-12-21 09:22:46</sys_updated_on>
+    </sys_claim>
+</record_update>
