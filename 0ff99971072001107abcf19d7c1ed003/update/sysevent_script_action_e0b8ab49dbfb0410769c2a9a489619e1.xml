@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sysevent_script_action">
+    <sysevent_script_action action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <condition_script>event.parm1 != ''</condition_script>
+        <description/>
+        <event_name>mid_server.down</event_name>
+        <name>MID Server Down</name>
+        <order>100</order>
+        <script><![CDATA[function createEvent() {
+    
+    // instance CustomEventManagement
+    var newEvent = new CustomEventManagement();
+
+	// retrieve Configuration Item based on System Event Parameter 1
+    // var CIsys_id = newEvent.identifyCmdbCi(event.parm1);
+
+	// build Event information based on System Event and Configuration Item
+    var msgKey = 'MIDServerStatus_' + event.parm1 + '_Status'; // Optional,  msgKey,
+    var severity = 1; // Mandatory, severity,
+    var description = 'MID Server: ' + event.parm1 + ', State: Down'; // Optional.description,
+    var aditionaInfo = '{"name":"' + event.parm1 + '"}'; // OptionaladitionaInfo,
+    var glideMonitor = null; // Optional, glide record of the selected monitor in  monitor table ,
+    var glideState = null; // Optional, glide record of the selected monitor state  in  monitor state table
+    var monitorName = 'MID Server Status - Down'; // Optional,  the name of the monitor if glideMonitor is missing,
+    var stateName = 'MID Servers'; // Optional, the name of the state if glideState is missing
+    var generalInfo = ''; // Optional. object with key value. each key is a name of a column in event table. Each value of the key will be inserted as the column value.
+    
+    // create new Event
+    newEvent.createEvent(msgKey, severity, description, aditionaInfo, glideMonitor, glideState, monitorName, stateName, generalInfo);
+
+}
+
+createEvent();]]></script>
+        <synchronous>false</synchronous>
+        <sys_class_name>sysevent_script_action</sys_class_name>
+        <sys_created_by>admin.gustavo.posada</sys_created_by>
+        <sys_created_on>2020-03-25 16:30:24</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>e0b8ab49dbfb0410769c2a9a489619e1</sys_id>
+        <sys_mod_count>29</sys_mod_count>
+        <sys_name>MID Server Down</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Global" source="global">global</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="myITOM">0ff99971072001107abcf19d7c1ed003</sys_scope>
+        <sys_update_name>sysevent_script_action_e0b8ab49dbfb0410769c2a9a489619e1</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2021-12-21 09:27:49</sys_updated_on>
+    </sysevent_script_action>
+    <sys_claim action="INSERT_OR_UPDATE">
+        <claim_owner_scope display_value="myITOM">0ff99971072001107abcf19d7c1ed003</claim_owner_scope>
+        <claim_timestamp>17ddc5183410000001</claim_timestamp>
+        <metadata_update_name>sysevent_script_action_e0b8ab49dbfb0410769c2a9a489619e1</metadata_update_name>
+        <previous_claim_app_version>1.0.0</previous_claim_app_version>
+        <previous_claim_name>myITOM</previous_claim_name>
+        <previous_claim_scope>0ff99971072001107abcf19d7c1ed003</previous_claim_scope>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2021-12-21 09:27:49</sys_created_on>
+        <sys_id>b97c55b107a001107abcf19d7c1ed082</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2021-12-21 09:27:49</sys_updated_on>
+    </sys_claim>
+</record_update>
